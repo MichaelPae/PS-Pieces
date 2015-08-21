@@ -6,6 +6,7 @@
 # (...)       Runde Klammern haben algebraische Bedeutung:
 #             Sie teilen der Shell mit, was zuerst ausgeführt wird.
 # $           Variablen-Kennzeichen
+# Autor: Michael Pätzold
 [String]$HalloWelt = "Hallo Welt"     # Typisierung ist nicht zwingend
 Write-Host ""; Write-Host $HalloWelt  # in der ISE sind die Var. nach Ausf. <F5> noch da
 Write-Host "mit         ", ("Powershell-Version"+" " + $PSVersionTable.psversion)
