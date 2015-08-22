@@ -1,34 +1,34 @@
-﻿# Send-WakeOnLanToMacAddress.ps1
-param( $Mac ) 
-
-
-function Send-WakeOnLAN {
-<#
+﻿<#
 .SYNOPSIS
-	Sendet ein Wake-On-LAN-Paket per Broadcast
+    Sendet ein Wake-On-LAN-Paket per Broadcast
 .DESCRIPTION
-	Mit dem Cmdlet Send-WakeOnLAN wird ein Wake-On-LAN-Paket ein Wake-On-LAN-Paket
-        fuer einen Rechner per Broadcast gesendet.
+    Mit dem Cmdlet Send-WakeOnLAN wird ein Wake-On-LAN-Paket ein Wake-On-LAN-Paket
+    fuer einen Rechner per Broadcast gesendet.
 .PARAMETER Mac
 	Mac-Adresse des Ziel-Rechners 
 .EXAMPLE
 	Send-WakeOnLAN -Mac 74:D4:35:B2:D3:5F
 .NOTES
-    
+    Autor: Michael Pätzold    
 .LINK
 #>
+
+param( $Mac ) 
+
+
+function Send-WakeOnLAN {
     param(
-    [String]$Mac='74:D4:35:B2:D3:5F' # Mac-Adresse der Netzwerk-Karte, Default: meine Karte
-    )
+          [String]$Mac='74:D4:35:B2:D3:5F' # Mac-Adresse der Netzwerk-Karte, Default: my card
+         )
 
     # Syntax der MAC-Adresse pruefen 
-    if (!($Mac -like "*:*:*:*:*:*") -or ($Mac -like "*-*-*-*-*-*")){ 
+    if (!($Mac -like "*:*:*:*:*:*") -or ($Mac -like "*-*-*-*-*-*")) { 
         write-error "Falsches Format der Mac-Adresse" 
         break 
     } 
 
+    # Magic-Packet erzeugen
     $packet = ConvertTo-MagicPacket -Mac $Mac
-    #write-output $packet
      
     # .NET Framework User Datagram Protocol
     $UDPclient = new-Object System.Net.Sockets.UdpClient 
@@ -51,7 +51,7 @@ function ConvertTo-MagicPacket {
 .EXAMPLE
 	ConvertTo-MagicPacket -Mac 00:22:19:0F:E0:82
 .NOTES
-    Idee: Pedro Castro, 2012-07-30; https://gallery.technet.microsoft.com/scriptcenter/Wake-On-Lan-815424c4
+    Quelle: Pedro Castro, 2012-07-30; https://gallery.technet.microsoft.com/scriptcenter/Wake-On-Lan-815424c4
 .LINK 
 #>
     param([String]$Mac) # Mac-Adresse einer Netzwerk-Karte
@@ -68,7 +68,9 @@ function ConvertTo-MagicPacket {
 }
 
 
-# Startpunkt
+# Starting Point
+
+# WakeOnLan senden
 if (-not$Mac) {
     Send-WakeOnLAN
     }

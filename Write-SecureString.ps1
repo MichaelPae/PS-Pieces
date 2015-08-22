@@ -1,17 +1,16 @@
-# String (z.B. Password) verschluesselt auf die Platte legen. Z.B. fuer Automation von Remote-PSSession
+# String verschluesselt auf die Platte legen.
+#    Z.B. fuer die Erzeugung einer Credential-Variable
+#
+# Autor: Michael Pätzold
+
 param([Parameter(Mandatory=$true)][String]$CryptFqn)
 
-
-function Write-Securestring {
-	param([Securestring]$Securestring, [String]$CryptFqn)
-	
-	convertfrom-securestring -SecureString $Securestring | out-file $CryptFqn
-}
-
-
-# Startpunkt
-# Enter-Securestring
+# Kennwort erfassen
 $Securestring = read-host -assecurestring 
-Write-Securestring -Securestring $Securestring -CryptFqn $CryptFqn
+
+# Securestring erzeugen
+convertfrom-securestring -SecureString $Securestring | out-file $CryptFqn
+
+# Ergebnis anzeigen
 Write-Host ("SecureString in "+ $CryptFqn +" abgelegt.")
 Get-ChildItem -Path $CryptFqn
