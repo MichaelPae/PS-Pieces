@@ -13,12 +13,15 @@
     Basename des Xbase-Projekt-Files .XPJ
 .PARAMETER Testen
     Kommando zum Start der neu erzeugten Xbase-EXE
-    N :    neue Exe Nicht ausführen
+    N :    neue Exe  N I C H T  ausführen
     D :    neue Exe mit Debug-Code erzeugen und im Debug-Modus starten
 .EXAMPLE
     Build-Xpp -XpjBaseName "XppApp" -Testen "N"
 .NOTES
-    Die Projekt-Datei .XPJ wird bei jedem Aufruf aktualisiert.
+    WICHTIG! Das Script setzt eine installierte Xbase++ Umgebung
+    voraus.
+
+    Die Xbase-Projekt-Datei .XPJ wird bei jedem Aufruf aktualisiert.
 
     Autor: Michael Pätzold
 .LINK 
