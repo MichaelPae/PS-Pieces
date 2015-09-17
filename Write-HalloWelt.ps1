@@ -1,7 +1,7 @@
 ﻿# PowerShell Beispiel Script
 # "#"            Inline Kommentar
 # <# ... #>      Blockkommentar
-# `              Code-Zeilen-Umbruch
+# `              Code-Zeilen-Umbruch mit dem „Gravis“-Zeichen
 # ;              Befehle in einer Zeile trennen
 # (...)          Runde Klammern haben algebraische Bedeutung:
 #                Sie teilen der Shell mit, was zuerst ausgeführt wird.
